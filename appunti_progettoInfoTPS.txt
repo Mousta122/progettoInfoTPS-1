@@ -1,0 +1,17 @@
+-modello mvc
+-view:
+	-jlist scrollpane
+	-canvas
+	-progress bar tempo
+-model:
+	-canzoni -> File + percorso, testo
+	-array di canzoni
+-controller:
+	-
+-thread:
+	-far partire e stoppare le canzoni
+
+
+GitHub: registrarsi e installare git in locale
+pushare per caricare il codice e di conseguenza le modifiche
+pullare per scaricare il codice e vedere le ultime modifiche
