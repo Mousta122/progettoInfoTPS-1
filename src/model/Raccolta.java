@@ -22,4 +22,11 @@ public class Raccolta {
 
         return modello;
     }
+
+    public void stampaCanzoni()
+    {
+        for (Canzone canzone : canzoni) {
+            System.out.println(canzone);
+        }
+    }
 }

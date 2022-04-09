@@ -9,6 +9,12 @@ public class SongPlayer implements Runnable {
     private Clip clip; // attributo necessario per far partire l'audio
     private AudioInputStream audioStream;
 
+    public SongPlayer()
+    {
+        this.song = null;
+        this.clip = null;
+    }
+
     public SongPlayer(Canzone song) {
         this.song = song;
         clip = null;
