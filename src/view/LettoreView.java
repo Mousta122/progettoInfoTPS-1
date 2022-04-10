@@ -47,6 +47,7 @@ public class LettoreView extends JFrame {
 		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
 		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
 		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
+		
 
 		/*
 		 * Icon i1 = new ImageIcon(
@@ -58,23 +59,31 @@ public class LettoreView extends JFrame {
 		 * Icon i3 = new ImageIcon(
 		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/stop.png"
 		 * );
+		 Icon i4 = new ImageIcon("C:\\Users\\Sow Moustapha\\eclipse-workspace\\Java1\\ProgettoInfoTPS\\src\\view\\img\\musica.png");
 		 */
 
 		btnPlay = new JButton(i1);
-		btnPlay.setBounds(27, 190, 45, 34);
+		btnPlay.setBounds(244, 190, 45, 34);
+		btnPlay.setBackground(Color.BLUE);
 		contentPane.add(btnPlay);
 
 		btnPause = new JButton(i2);
-		btnPause.setBounds(82, 190, 45, 34);
+		btnPause.setBounds(299, 190, 45, 34);
+		btnPause.setBackground(Color.GREEN);
 		contentPane.add(btnPause);
 
 		btnStop = new JButton(i3);
-		btnStop.setBounds(137, 190, 45, 34);
+		btnStop.setBounds(354, 190, 45, 34);
+		btnStop.setBackground(Color.RED);
 		contentPane.add(btnStop);
 
 		bar = new JProgressBar();
-		bar.setBounds(295, 190, 89, 23);
+		bar.setBounds(244, 150, 158, 10);
 		contentPane.add(bar);
+		
+		lblImg = new JLabel(i4);
+		lblImg.setBounds(241, 13, 158, 126);
+		contentPane.add(lblImg);
 
 		// non funziona
 		// barra();
@@ -139,5 +148,14 @@ public class LettoreView extends JFrame {
 	public void setBar(JProgressBar bar) {
 		this.bar = bar;
 	}
-
+	
+	public JLabel getLblImg(){
+		
+		return lblImg; 	
+	}
+	
+	public void setLblImg(JLabel lblImg){
+		
+		this.lblImg = lblImg;
+	}
 }
