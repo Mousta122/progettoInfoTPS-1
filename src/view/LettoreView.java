@@ -40,14 +40,25 @@ public class LettoreView extends JFrame {
 		list = new JList<Canzone>();
 		scrollPane.setViewportView(list);
 
-		// sono costretto ad usare il percorso assoluto perché con quello relativo non
-		// va
-		Icon i1 = new ImageIcon(
-				"C:/Users/zamun/OneDrive/Documenti/GitHub/progettoInfoTPS/src/view/img/play.png");
-		Icon i2 = new ImageIcon(
-				"C:/Users/zamun/OneDrive/Documenti/GitHub/progettoInfoTPS/src/view/img/pause.png");
-		Icon i3 = new ImageIcon(
-				"C:/Users/zamun/OneDrive/Documenti/GitHub/progettoInfoTPS/src/view/img/stop.png");
+		// questo è il metodo per caricare un'immagine o icona usando il percorso
+		// relativo.
+		// con il metodo commentato sotto, è necessario usare il percorso assoluto,
+		// quindi non è ideale come soluzione
+		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
+		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
+		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
+
+		/*
+		 * Icon i1 = new ImageIcon(
+		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/play.png"
+		 * );
+		 * Icon i2 = new ImageIcon(
+		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/pause.png"
+		 * );
+		 * Icon i3 = new ImageIcon(
+		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/stop.png"
+		 * );
+		 */
 
 		btnPlay = new JButton(i1);
 		btnPlay.setBounds(27, 190, 45, 34);

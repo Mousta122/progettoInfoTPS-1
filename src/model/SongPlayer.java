@@ -8,16 +8,19 @@ public class SongPlayer implements Runnable {
     private Canzone song;
     private Clip clip; // attributo necessario per far partire l'audio
     private AudioInputStream audioStream;
+    private String status; // lo utilizzo per far capire al controller che cosa sta facendo il SongPlayer
 
     public SongPlayer()
     {
         this.song = null;
         this.clip = null;
+        this.status = "stop";
     }
 
     public SongPlayer(Canzone song) {
         this.song = song;
         clip = null;
+        this.status = "stop";
     }
 
     public void changeSong(Canzone song) {
@@ -49,12 +52,16 @@ public class SongPlayer implements Runnable {
         clip.open(audioStream);
         clip.setFramePosition(0);
         clip.start();
+
+        setStatus("play");
     }
 
     public void stop() {
         if (clip != null) {
             clip.stop();
             clip = null;
+
+            setStatus("stop");
         }
     }
 
@@ -64,6 +71,8 @@ public class SongPlayer implements Runnable {
             // clip, essa automaticamente si salva dove si era fermata, e quindi sa da dove
             // ripartire, senza dover fare altro
             clip.stop();
+
+            setStatus("pause");
         }
     }
 
@@ -73,6 +82,8 @@ public class SongPlayer implements Runnable {
             // clip, essa automaticamente si salva dove si era fermata, e quindi sa da dove
             // ripartire, senza dover fare altro
             clip.start();
+
+            setStatus("play");
         }
     }
 
@@ -86,6 +97,14 @@ public class SongPlayer implements Runnable {
 
     public Canzone getSong() {
         return song;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

@@ -1,5 +1,6 @@
 import java.io.File;
 
+import controller.LettoreController;
 import model.Canzone;
 import model.Raccolta;
 import model.SongPlayer;
@@ -17,6 +18,7 @@ public class Main {
 		Raccolta r = loadMusic();
 		SongPlayer sp = new SongPlayer();
 		LettoreView v = new LettoreView();
+		LettoreController c = new LettoreController(v, r, sp);
 		v.setVisible(true);
 	}
 
