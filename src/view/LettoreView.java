@@ -24,6 +24,7 @@ public class LettoreView extends JFrame {
 	private JButton btnStop;
 	private JProgressBar bar;
 	private Canvas can;
+	private JLabel lblImg;
 
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
