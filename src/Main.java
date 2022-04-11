@@ -12,6 +12,8 @@ import view.LettoreView;
  * Zamuner Riccardo
  */
 
+//  NON LEGGGE I FILE MP3
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class Main {
 		SongPlayer sp = new SongPlayer();
 		LettoreView v = new LettoreView();
 		LettoreController c = new LettoreController(v, r, sp);
-		// v.setVisible(true);
+		v.setVisible(true);
 	}
 
 	public static Raccolta loadMusic() {

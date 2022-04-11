@@ -34,6 +34,10 @@ public class LettoreController implements ActionListener {
              * -se non sta suonando una canzone: niente
              * -altrimenti: sp.pause() + pause della barra
              */
+
+            if (sp.getStatus() == "play") {
+                sp.pause();
+            }
         }
         if (e.getSource() == v.getBtnPlay()) {
             /*
@@ -45,6 +49,22 @@ public class LettoreController implements ActionListener {
              * default la prima canzone nel sp)
              * -se era in pause: sp.resume() + resume della barra
              */
+
+            if (sp.getStatus() == "play") {
+                if (sp.getSong() != v.getSelectedSong()) {
+                    sp.stop();
+                    sp.changeSong(v.getSelectedSong());
+                }
+            } else if (sp.getSong() == null || sp.getStatus() == "stop") {
+                if (v.getSelectedSong() == null) // se non ho selezionato una canzone, parte la prima
+                {
+                    sp.changeSong(r.getSong(0));
+                } else {
+                    sp.changeSong(v.getSelectedSong());
+                }
+            } else if (sp.getStatus() == "pause") {
+                sp.resume();
+            }
         }
         if (e.getSource() == v.getBtnStop()) {
             /*
@@ -52,6 +72,10 @@ public class LettoreController implements ActionListener {
              * -se non sta suonando una canzone: niente
              * -altrimenti: stop + reset barra -> rimuovo la canzone dal sp
              */
+
+            if (sp.getStatus() != "stop") {
+                sp.stop();
+            }
         }
     }
 }

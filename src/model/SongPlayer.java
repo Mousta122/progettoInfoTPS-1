@@ -28,8 +28,10 @@ public class SongPlayer implements Runnable {
         this.song = song;
         try {
             play();
+            System.out.println("Playing");
         } catch (Exception e) {
             // TODO: gestire eccezione nel play
+            System.out.println(e);
         }
     }
 

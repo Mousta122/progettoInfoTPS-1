@@ -13,6 +13,12 @@ public class Raccolta {
         canzoni.add(c);
     }
 
+    public Canzone getSong(int idx)
+    {
+        // gestire IndexOutOfBoundsException
+        return canzoni.get(idx);
+    }
+
     public DefaultListModel<Canzone> getModello()
     {
         modello.clear();

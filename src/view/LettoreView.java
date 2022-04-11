@@ -41,7 +41,6 @@ public class LettoreView extends JFrame {
 		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
 		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
 		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
-		
 
 		/*
 		 * Icon i1 = new ImageIcon(
@@ -54,7 +53,7 @@ public class LettoreView extends JFrame {
 		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/stop.png"
 		 * );
 		 */
-		
+
 		btnPlay = new JButton(i1);
 		btnPlay.setBounds(244, 190, 45, 34);
 		btnPlay.setBackground(Color.green);
@@ -69,39 +68,21 @@ public class LettoreView extends JFrame {
 		btnStop.setBounds(354, 190, 45, 34);
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
-		
+
 		bar = new JProgressBar();
 		bar.setBounds(244, 150, 158, 10);
 		contentPane.add(bar);
-		
-		// Icon i4 = new ImageIcon("C:\\Users\\Sow Moustapha\\eclipse-workspace\\Java1\\ProgettoInfoTPS\\src\\view\\img\\musica.png");
-		// lblImg = new JLabel(i4);
-		// lblImg.setBounds(241, 13, 158, 126);
-		// contentPane.add(lblImg);
-		
-		this.setVisible(true);
-		barra();
+
+		Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
+		lblImg = new JLabel(i4);
+		lblImg.setBounds(241, 13, 158, 126);
+		contentPane.add(lblImg);
+
+		updateBarra(0);
 	}
 
-	public void barra() {
-
-		int count = 0;
-
-		while (count <= 100) {
-
-			try {
-
-				bar.setValue(count);
-				Thread.sleep(1000);
-
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-
-			count += 10;
-		}
-		
+	public void updateBarra(int val) {
+		bar.setValue(val);
 	}
 
 	public JList<Canzone> getList() {
@@ -110,6 +91,10 @@ public class LettoreView extends JFrame {
 
 	public void setList(JList<Canzone> list) {
 		this.list = list;
+	}
+
+	public Canzone getSelectedSong() {
+		return list.getSelectedValue();
 	}
 
 	public JButton getBtnPlay() {
@@ -143,14 +128,14 @@ public class LettoreView extends JFrame {
 	public void setBar(JProgressBar bar) {
 		this.bar = bar;
 	}
-	
-	public JLabel getLblImg(){
-		
-		return lblImg; 	
+
+	public JLabel getLblImg() {
+
+		return lblImg;
 	}
-	
-	public void setLblImg(JLabel lblImg){
-		
+
+	public void setLblImg(JLabel lblImg) {
+
 		this.lblImg = lblImg;
 	}
 }
