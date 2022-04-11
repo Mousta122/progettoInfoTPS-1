@@ -19,7 +19,7 @@ public class Main {
 		SongPlayer sp = new SongPlayer();
 		LettoreView v = new LettoreView();
 		LettoreController c = new LettoreController(v, r, sp);
-		v.setVisible(true);
+		// v.setVisible(true);
 	}
 
 	public static Raccolta loadMusic() {

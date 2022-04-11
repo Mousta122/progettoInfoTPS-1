@@ -1,15 +1,8 @@
 package view;
 
-import java.awt.Canvas;
+import java.awt.*;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import model.Canzone;
@@ -60,34 +53,34 @@ public class LettoreView extends JFrame {
 		 * Icon i3 = new ImageIcon(
 		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/stop.png"
 		 * );
-		 Icon i4 = new ImageIcon("C:\\Users\\Sow Moustapha\\eclipse-workspace\\Java1\\ProgettoInfoTPS\\src\\view\\img\\musica.png");
 		 */
-
+		
 		btnPlay = new JButton(i1);
 		btnPlay.setBounds(244, 190, 45, 34);
-		btnPlay.setBackground(Color.BLUE);
+		btnPlay.setBackground(Color.green);
 		contentPane.add(btnPlay);
 
 		btnPause = new JButton(i2);
 		btnPause.setBounds(299, 190, 45, 34);
-		btnPause.setBackground(Color.GREEN);
+		btnPause.setBackground(Color.blue);
 		contentPane.add(btnPause);
 
 		btnStop = new JButton(i3);
 		btnStop.setBounds(354, 190, 45, 34);
-		btnStop.setBackground(Color.RED);
+		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
-
+		
 		bar = new JProgressBar();
 		bar.setBounds(244, 150, 158, 10);
 		contentPane.add(bar);
 		
-		lblImg = new JLabel(i4);
-		lblImg.setBounds(241, 13, 158, 126);
-		contentPane.add(lblImg);
-
-		// non funziona
-		// barra();
+		// Icon i4 = new ImageIcon("C:\\Users\\Sow Moustapha\\eclipse-workspace\\Java1\\ProgettoInfoTPS\\src\\view\\img\\musica.png");
+		// lblImg = new JLabel(i4);
+		// lblImg.setBounds(241, 13, 158, 126);
+		// contentPane.add(lblImg);
+		
+		this.setVisible(true);
+		barra();
 	}
 
 	public void barra() {
@@ -108,6 +101,7 @@ public class LettoreView extends JFrame {
 
 			count += 10;
 		}
+		
 	}
 
 	public JList<Canzone> getList() {
