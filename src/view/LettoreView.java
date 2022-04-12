@@ -41,6 +41,7 @@ public class LettoreView extends JFrame {
 		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
 		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
 		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
+		Icon i5 = new ImageIcon(getClass().getResource("/view/img/gif.gif"));
 
 		/*
 		 * Icon i1 = new ImageIcon(
@@ -74,7 +75,7 @@ public class LettoreView extends JFrame {
 		contentPane.add(bar);
 
 		Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
-		lblImg = new JLabel(i4);
+		lblImg = new JLabel(i5);
 		lblImg.setBounds(241, 13, 158, 126);
 		contentPane.add(lblImg);
 
