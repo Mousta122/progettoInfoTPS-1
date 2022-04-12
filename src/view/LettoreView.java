@@ -74,7 +74,7 @@ public class LettoreView extends JFrame {
 		bar.setBounds(244, 150, 158, 10);
 		contentPane.add(bar);
 
-		Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
+		// Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
 		lblImg = new JLabel(i5);
 		lblImg.setBounds(241, 13, 158, 126);
 		contentPane.add(lblImg);
