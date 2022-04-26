@@ -20,15 +20,14 @@ public class Main {
 		Raccolta r = loadMusic();
 		SongPlayer sp = new SongPlayer();
 		LettoreView v = new LettoreView();
-		LettoreController c = new LettoreController(v, r, sp);
 		v.setVisible(true);
+		LettoreController c = new LettoreController(v, r, sp);
 	}
 
 	public static Raccolta loadMusic() {
 		Raccolta r = new Raccolta();
 
-		// File directory = new File("musica");
-		File directory = new File("musicaCompressa");
+		File directory = new File("musica");
 		// con questa istruzione posso iterare sulle canzoni nella directory "musica"
 		for (File file : directory.listFiles()) {
 			Canzone c = new Canzone(file, file.getName());

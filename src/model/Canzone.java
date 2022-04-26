@@ -4,12 +4,10 @@ import java.io.File;
 
 public class Canzone {
     private File file; // percorso
-    private String lyrics; // testo da mettere in display a lato. Eventualmente metteremo un'immagine
     private String title; // titolo che viene mostrato nella JList
 
     public Canzone(File file, String title) {
         this.file = file;
-        // this.lyrics = lyrics;
         this.title = title;
     }
 
@@ -19,14 +17,6 @@ public class Canzone {
 
     public void setFile(File file) {
         this.file = file;
-    }
-
-    public String getLyrics() {
-        return lyrics;
-    }
-
-    public void setLyrics(String lyrics) {
-        this.lyrics = lyrics;
     }
 
     public String getTitle() {
@@ -42,5 +32,4 @@ public class Canzone {
     public String toString() {
         return title;
     }
-
 }

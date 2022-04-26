@@ -18,6 +18,7 @@ public class LettoreController implements ActionListener {
         this.sp = sp;
         reigstraEvento();
         v.getList().setModel(r.getModello());
+        updateBarra();
     }
 
     public void reigstraEvento() {
@@ -42,9 +43,9 @@ public class LettoreController implements ActionListener {
         if (e.getSource() == v.getBtnPlay()) {
             /*
              * TODO:
+             * -se ho selezionato play e sto già suonando la canzone: niente
              * -se ho selezionato una canzone diversa da quella in corso:
              * stop + reset barra -> changeSong -> play
-             * -se ho selezionato play e sto già suonando la canzone: niente
              * -se non ci sono canzoni selezionate: play della prima (oppure setto di
              * default la prima canzone nel sp)
              * -se era in pause: sp.resume() + resume della barra
@@ -53,6 +54,7 @@ public class LettoreController implements ActionListener {
             if (sp.getStatus() == "play") {
                 if (sp.getSong() != v.getSelectedSong()) {
                     sp.stop();
+                    v.updateBarra(0);
                     sp.changeSong(v.getSelectedSong());
                 }
             } else if (sp.getSong() == null || sp.getStatus() == "stop") {
@@ -74,7 +76,27 @@ public class LettoreController implements ActionListener {
              */
 
             if (sp.getStatus() != "stop") {
+                v.updateBarra(0);
                 sp.stop();
+            }
+        }
+    }
+
+    public void updateBarra() {
+        // non è proprio ideale farlo andare come loop infinito però questo mi è venuto in mente
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+
+            }
+            while (sp.getStatus() == "play") {
+                v.updateBarra(sp.getElapsedTimePercentage());
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+
+                }
             }
         }
     }
