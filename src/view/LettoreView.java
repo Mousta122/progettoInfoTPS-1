@@ -4,8 +4,11 @@ import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.image.BufferedImage;
 
 import model.Canzone;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LettoreView extends JFrame {
 
@@ -19,12 +22,17 @@ public class LettoreView extends JFrame {
 	private Canvas can;
 	private JLabel lblImg;
 
+	@SuppressWarnings("deprecation")
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+
+		// Color c=new Color(221,124,120);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+		contentPane.setBackground(Color.lightGray);
 		setContentPane(contentPane);
 
 		scrollPane = new JScrollPane();
@@ -34,50 +42,58 @@ public class LettoreView extends JFrame {
 		list = new JList<Canzone>();
 		scrollPane.setViewportView(list);
 
-		// questo è il metodo per caricare un'immagine o icona usando il percorso
+		// questo Ã¨ il metodo per caricare un'immagine o icona usando il percorso
 		// relativo.
-		// con il metodo commentato sotto, è necessario usare il percorso assoluto,
-		// quindi non è ideale come soluzione
+		// con il metodo commentato sotto, Ã¨ necessario usare il percorso assoluto,
+		// quindi non Ã¨ ideale come soluzione
+		//Icon i1 = new ImageIcon("C:/Users/Sow Moustapha/eclipse-workspace/Java1/ProgettodiSow/src/view/img/play.png");
+		//Icon i2 = new ImageIcon("C:/Users/Sow Moustapha/eclipse-workspace/Java1/ProgettodiSow/src/view/img/pause.png");
+		//Icon i3 = new ImageIcon("C:/Users/Sow Moustapha/eclipse-workspace/Java1/ProgettodiSow/src/view/img/stop.png");
+		//Icon i5 = new ImageIcon("C:/Users/Sow Moustapha/eclipse-workspace/Java1/ProgettodiSow/src/view/img/gi.gif");
+		
 		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
 		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
 		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
-		Icon i5 = new ImageIcon(getClass().getResource("/view/img/gif.gif"));
+		Icon i5 = new ImageIcon(getClass().getResource("/view/img/gi.gif"));
 
-		/*
-		 * Icon i1 = new ImageIcon(
-		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/play.png"
-		 * );
-		 * Icon i2 = new ImageIcon(
-		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/pause.png"
-		 * );
-		 * Icon i3 = new ImageIcon(
-		 * "C:/Users/Sow Moustapha/eclipse-workspace/Java1/progettoInfoTPS/src/view/img/stop.png"
-		 * );
-		 */
 
 		btnPlay = new JButton(i1);
-		btnPlay.setBounds(244, 190, 45, 34);
+		btnPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPlay.setBounds(229, 171, 45, 34);
 		btnPlay.setBackground(Color.green);
 		contentPane.add(btnPlay);
 
 		btnPause = new JButton(i2);
-		btnPause.setBounds(299, 190, 45, 34);
+		btnPause.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPause.setBounds(284, 171, 57, 34);
 		btnPause.setBackground(Color.blue);
 		contentPane.add(btnPause);
 
 		btnStop = new JButton(i3);
-		btnStop.setBounds(354, 190, 45, 34);
+		btnStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnStop.setBounds(351, 171, 45, 34);
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
 
 		bar = new JProgressBar();
-		bar.setBounds(244, 150, 158, 10);
+		bar.setBounds(219, 150, 189, 10);
+		bar.setForeground(Color.cyan);
 		contentPane.add(bar);
 
-		Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
 		lblImg = new JLabel(i5);
-		lblImg.setBounds(241, 13, 158, 126);
+		lblImg.setBounds(209, 13, 215, 126);
 		contentPane.add(lblImg);
+
+		this.setVisible(true);
 
 		updateBarra(0);
 	}
