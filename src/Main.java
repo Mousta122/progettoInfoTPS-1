@@ -30,10 +30,37 @@ public class Main {
 		File directory = new File("musica");
 		// con questa istruzione posso iterare sulle canzoni nella directory "musica"
 		for (File file : directory.listFiles()) {
-			Canzone c = new Canzone(file, file.getName());
+			String title = file.getName();
+			title = removeExt(title);
+			File img = cercaImg(title);
+			Canzone c = new Canzone(file, title, img);
 			r.aggiungiCanzone(c);
 		}
 
 		return r;
+	}
+
+	private static File cercaImg(String title)
+	{
+		File directory = new File("img");
+
+		for (File file : directory.listFiles()) {
+			String s = removeExt(file.getName());
+			if(s.equals(title)) return file;	
+		}
+
+		return new File("img/default.gif");
+	}
+
+	private static String removeExt(String s)
+	{
+		String str = "";
+		for(int i=0; i<s.length(); i++)
+		{
+			if(s.charAt(i) == '.') return str;
+			str += s.charAt(i);
+		}
+
+		return "";
 	}
 }

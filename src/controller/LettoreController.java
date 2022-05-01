@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+
 import model.Raccolta;
 import model.SongPlayer;
 import view.LettoreView;
@@ -31,7 +33,6 @@ public class LettoreController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == v.getBtnPause()) {
             /*
-             * TODO:
              * -se non sta suonando una canzone: niente
              * -altrimenti: sp.pause() + pause della barra
              */
@@ -42,7 +43,6 @@ public class LettoreController implements ActionListener {
         }
         if (e.getSource() == v.getBtnPlay()) {
             /*
-             * TODO:
              * -se ho selezionato play e sto già suonando la canzone: niente
              * -se ho selezionato una canzone diversa da quella in corso:
              * stop + reset barra -> changeSong -> play
@@ -52,7 +52,7 @@ public class LettoreController implements ActionListener {
              */
 
             if (sp.getStatus() == "play") {
-                if (sp.getSong() != v.getSelectedSong()) {
+                if (v.getSelectedSong() != null && sp.getSong() != v.getSelectedSong()) {
                     sp.stop();
                     v.updateBarra(0);
                     sp.changeSong(v.getSelectedSong());
@@ -67,10 +67,11 @@ public class LettoreController implements ActionListener {
             } else if (sp.getStatus() == "pause") {
                 sp.resume();
             }
+
+            v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));
         }
         if (e.getSource() == v.getBtnStop()) {
             /*
-             * TODO:
              * -se non sta suonando una canzone: niente
              * -altrimenti: stop + reset barra -> rimuovo la canzone dal sp
              */
@@ -79,11 +80,14 @@ public class LettoreController implements ActionListener {
                 v.updateBarra(0);
                 sp.stop();
             }
+
+            v.getLblImg().setIcon(new ImageIcon("img/default.gif"));
         }
     }
 
     public void updateBarra() {
-        // non è proprio ideale farlo andare come loop infinito però questo mi è venuto in mente
+        // non è proprio ideale farlo andare come loop infinito però questo mi è venuto
+        // in mente
         while (true) {
             try {
                 Thread.sleep(1000);

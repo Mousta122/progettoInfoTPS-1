@@ -16,8 +16,8 @@ public class LettoreView extends JFrame {
 	private JButton btnPause;
 	private JButton btnStop;
 	private JProgressBar bar;
-	private Canvas can;
 	private JLabel lblImg;
+	private Icon songImage;
 
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,10 +38,11 @@ public class LettoreView extends JFrame {
 		// relativo.
 		// con il metodo commentato sotto, è necessario usare il percorso assoluto,
 		// quindi non è ideale come soluzione
-		Icon i1 = new ImageIcon(getClass().getResource("/view/img/play.png"));
-		Icon i2 = new ImageIcon(getClass().getResource("/view/img/pause.png"));
-		Icon i3 = new ImageIcon(getClass().getResource("/view/img/stop.png"));
-		Icon i5 = new ImageIcon(getClass().getResource("/view/img/gif.gif"));
+		// Icon i1 = new ImageIcon(getClass().getResource("img/play.png"));
+		Icon i1 = new ImageIcon("img/play.png");
+		Icon i2 = new ImageIcon("img/pause.png");
+		Icon i3 = new ImageIcon("img/stop.png");
+		songImage = new ImageIcon("img/default.gif");
 
 		/*
 		 * Icon i1 = new ImageIcon(
@@ -75,7 +76,7 @@ public class LettoreView extends JFrame {
 		contentPane.add(bar);
 
 		// Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
-		lblImg = new JLabel(i5);
+		lblImg = new JLabel(songImage);
 		lblImg.setBounds(241, 13, 158, 126);
 		contentPane.add(lblImg);
 
@@ -138,5 +139,10 @@ public class LettoreView extends JFrame {
 	public void setLblImg(JLabel lblImg) {
 
 		this.lblImg = lblImg;
+	}
+
+	public void setSongImage(String path)
+	{
+		songImage = new ImageIcon(path);
 	}
 }
