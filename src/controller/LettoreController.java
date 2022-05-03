@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.ImageIcon;
 
 import model.Raccolta;
@@ -23,7 +24,7 @@ public class LettoreController implements ActionListener {
         updateBarra();
     }
 
-    public void reigstraEvento() {
+    private void reigstraEvento() {
         v.getBtnPause().addActionListener(this);
         v.getBtnPlay().addActionListener(this);
         v.getBtnStop().addActionListener(this);
@@ -48,7 +49,7 @@ public class LettoreController implements ActionListener {
              * stop + reset barra -> changeSong -> play
              * -se non ci sono canzoni selezionate: play della prima (oppure setto di
              * default la prima canzone nel sp)
-             * -se era in pause: sp.resume() + resume della barra
+             * -se era in pause: cambio canzone oppure sp.resume() + resume della barra
              */
 
             if (sp.getStatus() == "play") {
@@ -65,7 +66,15 @@ public class LettoreController implements ActionListener {
                     sp.changeSong(v.getSelectedSong());
                 }
             } else if (sp.getStatus() == "pause") {
-                sp.resume();
+                if (v.getSelectedSong() == null) // se non ho selezionato una canzone, parte la prima
+                {
+                    sp.changeSong(r.getSong(0));
+                } else if (v.getSelectedSong() != sp.getSong()) {
+                    sp.changeSong(v.getSelectedSong());
+                } else 
+                {
+                    sp.resume();
+                }
             }
 
             v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));

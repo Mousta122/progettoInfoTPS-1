@@ -5,7 +5,7 @@ import javax.sound.sampled.*;
 public class SongPlayer {
     private Canzone song;
     private Clip clip; // attributo necessario per far partire l'audio
-    private AudioInputStream audioStream;
+    private AudioInputStream audioStream; // attributo necessario per far partire l'audio
     private String status; // lo utilizzo per far capire al controller che cosa sta facendo il SongPlayer
 
     public SongPlayer() {
