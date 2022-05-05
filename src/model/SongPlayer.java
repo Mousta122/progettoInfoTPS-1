@@ -97,6 +97,20 @@ public class SongPlayer implements Runnable {
         }
     }
 
+    public int getMinutes() {
+
+		int total = getTotalTime();
+
+		int min = total / 60;
+
+		return min;
+	}
+
+	public int getSeconds() {
+		
+		return getTotalTime() % 60;
+	}
+
     public Canzone getSong() {
         return song;
     }

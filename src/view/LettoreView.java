@@ -21,11 +21,13 @@ public class LettoreView extends JFrame {
 	private JProgressBar bar;
 	private Canvas can;
 	private JLabel lblImg;
+	private JLabel lblTempo;
+	private JLabel lblTempoTot;
 
 	@SuppressWarnings("deprecation")
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 257);
 
 		// Color c=new Color(221,124,120);
 
@@ -62,7 +64,7 @@ public class LettoreView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnPlay.setBounds(229, 171, 45, 34);
+		btnPlay.setBounds(254, 171, 45, 34);
 		btnPlay.setBackground(Color.green);
 		contentPane.add(btnPlay);
 
@@ -71,7 +73,7 @@ public class LettoreView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnPause.setBounds(284, 171, 57, 34);
+		btnPause.setBounds(309, 171, 45, 34);
 		btnPause.setBackground(Color.blue);
 		contentPane.add(btnPause);
 
@@ -80,18 +82,27 @@ public class LettoreView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnStop.setBounds(351, 171, 45, 34);
+		btnStop.setBounds(364, 171, 45, 34);
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
 
 		bar = new JProgressBar();
-		bar.setBounds(219, 150, 189, 10);
-		bar.setForeground(Color.cyan);
+		bar.setBackground(new Color(211, 211, 211));
+		bar.setBounds(239, 150, 189, 10);
+		bar.setForeground(new Color(224, 255, 255));
 		contentPane.add(bar);
 
 		lblImg = new JLabel(i5);
-		lblImg.setBounds(209, 13, 215, 126);
+		lblImg.setBounds(226, 13, 215, 126);
 		contentPane.add(lblImg);
+
+		lblTempo = new JLabel("00:00");
+		lblTempo.setBounds(439, 146, 35, 14);
+		contentPane.add(lblTempo);
+		
+		lblTempoTot = new JLabel("00:00");
+		lblTempoTot.setBounds(194, 146, 35, 14);
+		contentPane.add(lblTempoTot);
 
 		this.setVisible(true);
 
@@ -154,5 +165,8 @@ public class LettoreView extends JFrame {
 	public void setLblImg(JLabel lblImg) {
 
 		this.lblImg = lblImg;
+	}
+	public JLabel getLblTempo() {
+		return lblTempo;
 	}
 }
