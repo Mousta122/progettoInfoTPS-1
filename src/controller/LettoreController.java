@@ -3,8 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.lang.model.util.ElementScanner14;
 import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import model.Raccolta;
 import model.SongPlayer;
@@ -28,6 +29,23 @@ public class LettoreController implements ActionListener {
         v.getBtnPause().addActionListener(this);
         v.getBtnPlay().addActionListener(this);
         v.getBtnStop().addActionListener(this);
+        v.getBtnReplay().addActionListener(this);
+        v.getList().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(sp.getStatus() == "end")
+                {
+                    if(v.getList().getSelectedValue() == sp.getSong())
+                    {
+                        v.addBtnReplay();
+                    }
+                    else
+                    {
+                        v.removeBtnReplay();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -87,10 +105,18 @@ public class LettoreController implements ActionListener {
 
             if (sp.getStatus() != "stop") {
                 v.updateBarra(0);
+                v.removeBtnReplay();
                 sp.stop();
             }
 
             v.getLblImg().setIcon(new ImageIcon("img/default.gif"));
+        }
+        if(e.getSource() == v.getBtnReplay())
+        {
+            sp.setStatus("play");
+            sp.restart();
+            v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));
+            v.removeBtnReplay();
         }
     }
 
@@ -109,6 +135,12 @@ public class LettoreController implements ActionListener {
                     Thread.sleep(1000);
                 } catch (Exception e) {
 
+                }
+                if(sp.getElapsedTimePercentage() == 100)
+                {
+                    v.updateBarra(100); //a volte si bugga e si blocca a 99, quindi meglio settarlo a mano
+                    sp.setStatus("end");
+                    v.addBtnReplay();
                 }
             }
         }

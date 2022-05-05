@@ -18,6 +18,7 @@ public class LettoreView extends JFrame {
 	private JProgressBar bar;
 	private JLabel lblImg;
 	private Icon songImage;
+	private JButton btnReplay;
 
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,6 +43,7 @@ public class LettoreView extends JFrame {
 		Icon i1 = new ImageIcon("img/play.png");
 		Icon i2 = new ImageIcon("img/pause.png");
 		Icon i3 = new ImageIcon("img/stop.png");
+		Icon i4 = new ImageIcon("img/replay.png");
 		songImage = new ImageIcon("img/default.gif");
 
 		/*
@@ -70,6 +72,11 @@ public class LettoreView extends JFrame {
 		btnStop.setBounds(354, 190, 45, 34);
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
+
+		
+		btnReplay = new JButton(i4);
+		btnReplay.setBounds(244, 190, 45, 34);
+		btnReplay.setBackground(Color.green);
 
 		bar = new JProgressBar();
 		bar.setBounds(244, 150, 158, 10);
@@ -144,5 +151,31 @@ public class LettoreView extends JFrame {
 	public void setSongImage(String path)
 	{
 		songImage = new ImageIcon(path);
+	}
+
+	public JButton getBtnReplay() {
+		return btnReplay;
+	}
+
+	public void setBtnReplay(JButton btnReplay) {
+		this.btnReplay = btnReplay;
+	}
+	
+	public void addBtnReplay()
+	{
+		contentPane.remove(btnPlay);
+		contentPane.add(btnReplay);
+		contentPane.revalidate();
+        validate();
+        repaint();
+	}
+
+	public void removeBtnReplay()
+	{
+		contentPane.remove(btnReplay);
+		contentPane.add(btnPlay);
+		contentPane.revalidate();
+        validate();
+        repaint();
 	}
 }
