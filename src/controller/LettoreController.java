@@ -33,14 +33,10 @@ public class LettoreController implements ActionListener {
         v.getList().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                if(sp.getStatus() == "end")
-                {
-                    if(v.getList().getSelectedValue() == sp.getSong())
-                    {
+                if (sp.getStatus() == "end") {
+                    if (v.getList().getSelectedValue() == sp.getSong()) {
                         v.addBtnReplay();
-                    }
-                    else
-                    {
+                    } else {
                         v.removeBtnReplay();
                     }
                 }
@@ -89,9 +85,15 @@ public class LettoreController implements ActionListener {
                     sp.changeSong(r.getSong(0));
                 } else if (v.getSelectedSong() != sp.getSong()) {
                     sp.changeSong(v.getSelectedSong());
-                } else 
-                {
+                } else {
                     sp.resume();
+                }
+            } else if (sp.getStatus() == "end") {
+                if (v.getSelectedSong() == null) // se non ho selezionato una canzone, riparte la prima
+                {
+                    sp.changeSong(r.getSong(0));
+                } else if (v.getSelectedSong() != sp.getSong()) {
+                    sp.changeSong(v.getSelectedSong());
                 }
             }
 
@@ -111,8 +113,7 @@ public class LettoreController implements ActionListener {
 
             v.getLblImg().setIcon(new ImageIcon("img/default.gif"));
         }
-        if(e.getSource() == v.getBtnReplay())
-        {
+        if (e.getSource() == v.getBtnReplay()) {
             sp.setStatus("play");
             sp.restart();
             v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));
@@ -136,9 +137,8 @@ public class LettoreController implements ActionListener {
                 } catch (Exception e) {
 
                 }
-                if(sp.getElapsedTimePercentage() == 100)
-                {
-                    v.updateBarra(100); //a volte si bugga e si blocca a 99, quindi meglio settarlo a mano
+                if (sp.getElapsedTimePercentage() == 100) {
+                    v.updateBarra(100); // a volte si bugga e si blocca a 99, quindi meglio settarlo a mano
                     sp.setStatus("end");
                     v.addBtnReplay();
                 }
