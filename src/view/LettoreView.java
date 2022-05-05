@@ -19,10 +19,12 @@ public class LettoreView extends JFrame {
 	private JLabel lblImg;
 	private Icon songImage;
 	private JButton btnReplay;
+        private JLabel lblTempo;
+	private JLabel lblTempoTot;
 
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 257);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -59,33 +61,43 @@ public class LettoreView extends JFrame {
 		 */
 
 		btnPlay = new JButton(i1);
-		btnPlay.setBounds(244, 190, 45, 34);
+		btnPlay.setBounds(254, 171, 45, 34);
 		btnPlay.setBackground(Color.green);
 		contentPane.add(btnPlay);
 
 		btnPause = new JButton(i2);
-		btnPause.setBounds(299, 190, 45, 34);
+		btnPause.setBounds(309, 170, 45, 34);
 		btnPause.setBackground(Color.blue);
 		contentPane.add(btnPause);
 
 		btnStop = new JButton(i3);
-		btnStop.setBounds(354, 190, 45, 34);
+		btnStop.setBounds(364, 171, 45, 34);
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
 
 		
 		btnReplay = new JButton(i4);
-		btnReplay.setBounds(244, 190, 45, 34);
+		btnReplay.setBounds(254, 171, 45, 34);
 		btnReplay.setBackground(Color.green);
 
 		bar = new JProgressBar();
-		bar.setBounds(244, 150, 158, 10);
+		bar.setBackground(new Color(211, 211, 211));
+		bar.setBounds(239, 150, 189, 10);
+		bar.setForeground(new Color(224, 255, 255));
 		contentPane.add(bar);
 
 		// Icon i4 = new ImageIcon(getClass().getResource("/view/img/musica.png"));
 		lblImg = new JLabel(songImage);
-		lblImg.setBounds(241, 13, 158, 126);
+		lblImg.setBounds(226, 13, 215, 126);
 		contentPane.add(lblImg);
+		
+		lblTempo = new JLabel("00:00");
+		lblTempo.setBounds(439, 146, 35, 14);
+		contentPane.add(lblTempo);
+		
+		lblTempoTot = new JLabel("00:00");
+		lblTempoTot.setBounds(194, 146, 35, 14);
+		contentPane.add(lblTempoTot);
 
 		updateBarra(0);
 	}
@@ -177,5 +189,14 @@ public class LettoreView extends JFrame {
 		contentPane.revalidate();
         validate();
         repaint();
+	}
+	
+	public JLabel getLblTempo() {
+		return lblTempo;
+	}
+	
+	public JLabel getLblTempoTot() {
+		
+		return lblTempoTot;
 	}
 }
