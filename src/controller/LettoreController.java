@@ -11,6 +11,12 @@ import model.Raccolta;
 import model.SongPlayer;
 import view.LettoreView;
 
+/**
+ * @author Pavan Riccardo, Sow Moustapha, Zamuner Riccardo
+ *         Classe controller che gestisce le interazioni dell'utente con
+ *         l'interfaccia grafica e modifica il model di conseguenza
+ */
+
 public class LettoreController implements ActionListener {
     private LettoreView v;
     private Raccolta r;
@@ -96,7 +102,7 @@ public class LettoreController implements ActionListener {
                     sp.changeSong(v.getSelectedSong());
                 }
             }
-
+            setViewTotalTime();
             v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));
         }
         if (e.getSource() == v.getBtnStop()) {
@@ -107,6 +113,7 @@ public class LettoreController implements ActionListener {
 
             if (sp.getStatus() != "stop") {
                 v.updateBarra(0);
+                resetViewTime();
                 v.removeBtnReplay();
                 sp.stop();
             }
@@ -117,6 +124,7 @@ public class LettoreController implements ActionListener {
             sp.setStatus("play");
             sp.restart();
             v.getLblImg().setIcon(new ImageIcon(sp.getSong().getImg().toString()));
+            setViewTotalTime();
             v.removeBtnReplay();
         }
     }
@@ -132,6 +140,7 @@ public class LettoreController implements ActionListener {
             }
             while (sp.getStatus() == "play") {
                 v.updateBarra(sp.getElapsedTimePercentage());
+                setViewTime();
                 try {
                     Thread.sleep(1000);
                 } catch (Exception e) {
@@ -139,10 +148,43 @@ public class LettoreController implements ActionListener {
                 }
                 if (sp.getElapsedTimePercentage() == 100) {
                     v.updateBarra(100); // a volte si bugga e si blocca a 99, quindi meglio settarlo a mano
+                    v.getLblTempo().setText(v.getLblTempoTot().getText());
                     sp.setStatus("end");
                     v.addBtnReplay();
                 }
             }
         }
+    }
+
+    private void setViewTime()
+    {
+        int min = sp.getElapsedMinutes();
+        int sec = sp.getElapsedSeconds();
+        String m = "";
+        String s = "";
+        if(min/10 == 0) m += "0";
+        if(sec/10 == 0) s += "0";
+        m += min;
+        s += sec; 
+        v.getLblTempo().setText(m + ":" + s);
+    }
+
+    private void setViewTotalTime()
+    {
+        int min = sp.getTotalMinutes();
+        int sec = sp.getTotalSeconds();
+        String m = "";
+        String s = "";
+        if(min/10 == 0) m += "0";
+        if(sec/10 == 0) s += "0";
+        m += min;
+        s += sec; 
+        v.getLblTempoTot().setText(m + ":" + s);
+    }
+
+    private void resetViewTime()
+    {
+        v.getLblTempo().setText("00:00");
+        v.getLblTempoTot().setText("00:00");
     }
 }

@@ -90,8 +90,18 @@ public class SongPlayer {
             // eccezione
             return 0;
         } else {
-            return (int) (clip.getMicrosecondLength() / 1000);
+            return (int) (clip.getMicrosecondLength() / 1000000);
         }
+    }
+
+    private int getElapsedTime()
+    {
+        if(clip == null)
+        {
+            return 0;
+        }
+        
+        return (int) (clip.getMicrosecondPosition() / 1000000);
     }
 
     public int getElapsedTimePercentage() {
@@ -101,9 +111,33 @@ public class SongPlayer {
             // eccezione
             return 0;
         } else {
-            int time = (int) (clip.getMicrosecondPosition() / 1000);
+            if(clip == null)
+            {
+                return 0;
+            }
+            int time = (int) (clip.getMicrosecondPosition() / 1000000);
             return (100 * time) / total;
         }
+    }
+
+    public int getElapsedMinutes()
+    {
+        return getElapsedTime() / 60;
+    }
+
+    public int getElapsedSeconds()
+    {
+        return getElapsedTime() % 60;
+    }
+
+    public int getTotalMinutes()
+    {
+        return getTotalTime() / 60;
+    }
+
+    public int getTotalSeconds()
+    {
+        return getTotalTime() % 60;
     }
 
     public Canzone getSong() {

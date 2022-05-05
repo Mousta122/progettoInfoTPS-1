@@ -73,7 +73,6 @@ public class LettoreView extends JFrame {
 		btnStop.setBackground(Color.red);
 		contentPane.add(btnStop);
 
-		
 		btnReplay = new JButton(i4);
 		btnReplay.setBounds(244, 190, 45, 34);
 		btnReplay.setBackground(Color.green);
@@ -86,6 +85,17 @@ public class LettoreView extends JFrame {
 		lblImg = new JLabel(songImage);
 		lblImg.setBounds(241, 13, 158, 126);
 		contentPane.add(lblImg);
+<<<<<<< Updated upstream
+=======
+		
+		lblTempo = new JLabel("00:00");
+		lblTempo.setBounds(200, 146, 35, 14);
+		contentPane.add(lblTempo);
+		
+		lblTempoTot = new JLabel("00:00");
+		lblTempoTot.setBounds(439, 146, 35, 14);
+		contentPane.add(lblTempoTot);
+>>>>>>> Stashed changes
 
 		updateBarra(0);
 	}
