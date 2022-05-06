@@ -19,8 +19,11 @@ public class LettoreView extends JFrame {
 	private JLabel lblImg;
 	private Icon songImage;
 	private JButton btnReplay;
-    private JLabel lblTempo;
+        private JLabel lblTempo;
 	private JLabel lblTempoTot;
+	private JButton btnNext;
+	private JButton btnBack;
+	private JButton btnAddSong;
 
 	public LettoreView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +51,11 @@ public class LettoreView extends JFrame {
 		Icon i3 = new ImageIcon("img/stop.png");
 		Icon i4 = new ImageIcon("img/replay.png");
 		songImage = new ImageIcon("img/default.gif");
+		Icon i7 = new ImageIcon(getClass().getResource("/ProgettodiSow/img/next.png");
+		Icon i8 = new ImageIcon(getClass().getResource("/ProgettodiSow/img/next.png");
+		ImageIcon i9 = new ImageIcon(getClass().getResource("/ProgettodiSow/img/next.png");
 
+		setIconImage(i9.getImage());			     
 		btnPlay = new JButton(i1);
 		btnPlay.setBounds(244, 190, 45, 34);
 		btnPlay.setBounds(254, 171, 45, 34);
@@ -93,6 +100,21 @@ public class LettoreView extends JFrame {
 		lblTempoTot = new JLabel("00:00");
 		lblTempoTot.setBounds(439, 146, 35, 14);
 		contentPane.add(lblTempoTot);
+					     
+		btnNext = new JButton(i7);
+		btnNext.setBackground(new Color(148, 0, 211));
+		btnNext.setBounds(419, 171, 45, 34);
+		contentPane.add(btnNext);
+
+		btnBack = new JButton(i8);
+		btnBack.setBackground(new Color(148, 0, 211));
+		btnBack.setBounds(199, 171, 45, 34);
+		contentPane.add(btnBack);
+
+		btnAddSong = new JButton("Aggiungi canzone");
+		btnAddSong.setBackground(new Color(255, 255, 255));
+		btnAddSong.setBounds(10, 171, 174, 34);
+		contentPane.add(btnAddSong);
 
 		updateBarra(0);
 	}
@@ -193,5 +215,17 @@ public class LettoreView extends JFrame {
 	public JLabel getLblTempoTot() {
 		
 		return lblTempoTot;
+	}
+					     
+	public JButton getBtnNext() {
+		return btnNext;
+	}
+
+	public JButton getBtnBack() {
+		return btnBack;
+	}
+
+	public JButton getBtnAddSong() {
+		return btnAddSong;
 	}
 }
